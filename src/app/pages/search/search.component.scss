@@ -1,0 +1,28 @@
+:host
+{
+  ion-content{
+
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+    background-size:contain;
+  }
+  .scroll-content{
+    
+    -webkit-background-size: contain;
+    -moz-background-size: contain;
+    -o-background-size: contain;
+    background-size:contain;
+  }
+  ion-header{
+    ion-toolbar { 
+      --background: url('../../../assets/img/doctorinfo.png') ;
+     // --background: url('https://i1.wp.com/www.solidcolore.com/3840/cfecec_background.jpg?ssl=1') 0 0/100% 100%;
+      --min-height:50px;
+      --background-size: cover;
+      ion-searchbar{
+        --background: transparent;
+      }
+  }
+}
+}
