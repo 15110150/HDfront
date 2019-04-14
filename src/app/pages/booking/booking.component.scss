@@ -7,8 +7,8 @@
     -o-background-size: contain;
     background-size:cover;
   }
-ion-label{
-  --color:"#ffffff";
+ion-label.titletext{
+    --color: #075698;
 }
 ion-header{
 ion-toolbar {
@@ -46,7 +46,14 @@ ion-button.btn2{
 
 ion-card.cards-pk ion-card-header {
   color: #075698;
-  --min-height:10px;
 }
-
+ion-item.datepicker {
+   --background: white;
+}
+ion-slide.datepicker {
+    --background-color: white;
+ }
+ion-grid{
+    background-color: white;
+}
 }

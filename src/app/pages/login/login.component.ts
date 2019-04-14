@@ -42,6 +42,8 @@ export class LoginComponent {
  
   signInWithFB(): void {
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
+    console.log(this.user.authToken);
+    
   }
   
   signInWithLinkedIn(): void {

@@ -1,5 +1,5 @@
-.scroll-content{
-    background: url('https://us.123rf.com/450wm/asamask92/asamask921604/asamask92160400081/55517312-stock-vector-white-blue-sky-gradient-background-vector-illustration.jpg?ver=6') no-repeat ;
+ion-content{
+    background: url('../../../assets/img/homebg.jpg') no-repeat ;
     -webkit-background-size: contain;
     -moz-background-size: contain;
     -o-background-size: contain;
@@ -8,3 +8,4 @@
   .trans{
     background : transparent;
   }
+  

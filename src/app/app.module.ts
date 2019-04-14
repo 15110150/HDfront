@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
@@ -12,6 +13,7 @@ import { ServiceWorkerModule, SwUpdate, SwPush } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import {APP_BASE_HREF} from '@angular/common';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
+import { AccountComponent } from './pages/account/account.component';
 import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
 import { GoogleLoginProvider, FacebookLoginProvider, LinkedInLoginProvider} from "angularx-social-login";
 let config = new AuthServiceConfig([
@@ -34,9 +36,13 @@ export function provideConfig() {
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [SocialLoginModule,
-
-    BrowserModule, IonicModule.forRoot(), AppRoutingModule, ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })],
+  imports: [
+    SocialLoginModule,
+    HttpClientModule,
+    BrowserModule, 
+    IonicModule.forRoot(), 
+    AppRoutingModule, 
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })],
   providers: [
     StatusBar,
     SplashScreen,

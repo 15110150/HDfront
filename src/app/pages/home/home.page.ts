@@ -24,9 +24,6 @@ searchDoctors() {
   this.router.navigateByUrl('/search');
 }
 
-slideOpts = {
-  effect: 'flip'
-};
 
 private adjustElementOnScroll(ev) {
   if (ev) {

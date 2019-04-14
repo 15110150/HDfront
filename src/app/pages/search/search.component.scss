@@ -25,4 +25,19 @@
       }
   }
 }
+ion-button.paoday{
+  --background:	#075698;
+  --color: white;
+}
+ion-button.clicked{
+  --background : white;
+  --color : #075698;
+}
+ion-item.info{
+  --min-height : 80px;
+}
+ion-label.addresslb
+{text-overflow: inherit;
+white-space: normal;
+}
 }

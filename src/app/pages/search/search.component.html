@@ -6,105 +6,88 @@
             <ion-icon slot="icon-only" name="pin" color="danger"></ion-icon>
           </ion-button>
         </ion-buttons>
-        <ion-label color="white" ali="center">
+        <ion-title color="white" ali="center" class="addresslb">
           <strong>
-        484 Lê Văn Việt, Tăng Nhơn Phú
+        {{currentAddress}}
       </strong>
-        </ion-label>
+        </ion-title>
         <ion-buttons slot="end">
-            <ion-button>
+            <ion-button (click) = "btnMap_click()">
               <ion-icon slot="icon-only" name="map" color="white"></ion-icon>
             </ion-button>
           </ion-buttons>
   </ion-toolbar>
-  <ion-searchbar placeholder="Tìm kiếm" color="light"></ion-searchbar>
+  <ion-item>
+    <ion-input color="dark" placeholder="Tìm kiếm triệu chứng"  [(ngModel)]="symptom"></ion-input>
+    <ion-buttons slot="end">
+    <ion-button (click)="searchDoctors()">
+      <ion-icon slot="icon-only" name="search" color="dark"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+  </ion-item>
 </ion-header>
 
 <ion-content color="light">
-    <!-- <ion-slides pager="false" [options]="slideOpts">
-        <ion-slide>
-          <ion-grid>
-            <ion-row>
-              <ion-col col-4>
-                <ion-card>
-                  <ion-card-content color="primary">
-                    Xương khớp
-                  </ion-card-content>
-                </ion-card>
-              </ion-col>
-              <ion-col col-4>
-                <ion-card>
-                  <ion-card-content color="primary">
-                    Tiêu hóa
-                  </ion-card-content>
-                </ion-card>
-              </ion-col>
-              <ion-col col-4>
-                  <ion-card>
-                    <ion-card-content color="primary">
-                      Thần kinh
-                    </ion-card-content>
-                  </ion-card>
-              </ion-col>
-            </ion-row>
-          </ion-grid>
-        </ion-slide>
-        <ion-slide>
-          <ion-grid>
-              <ion-row>
-                  <ion-col col-4>
-                    <ion-card>
-                      <ion-card-content color="primary">
-                        Da liễu
-                      </ion-card-content>
-                    </ion-card>
-                  </ion-col>
-                  <ion-col col-4>
-                    <ion-card>
-                      <ion-card-content color="primary">
-                        Đa khoa
-                      </ion-card-content>
-                    </ion-card>
-                  </ion-col>
-                  <ion-col col-4>
-                      <ion-card>
-                        <ion-card-content color="primary">
-                          Tim
-                        </ion-card-content>
-                      </ion-card>
-                  </ion-col>
-                </ion-row>
-          </ion-grid>
-        </ion-slide>
-      </ion-slides> -->
+  <ion-row align-items-center>
+    <ion-col col-4 >
+      <ion-button expand="full" class="paoday" (click)="chang1($event)"> 
+        Sáng
+      </ion-button>
+    </ion-col>
+    <ion-col col-4>
+      <ion-button expand="full" class="paoday" (click)="chang1($event)">
+        Trưa
+      </ion-button>
+    </ion-col>
+    <ion-col col-4>
+      <ion-button expand="full" class="paoday" (click)="chang1($event)">
+        Chiều
+      </ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-list *ngFor="let result of searchResult">
   <ion-card>
-    <ion-item>
+    <ion-item class="info">
       <ion-thumbnail slot="start">
-        <img src="https://dwbxi9io9o7ce.cloudfront.net/images/11_07_2016_10_07_11_823522.jpeg">
+        <img src="{{result.avatarImg}}">
       </ion-thumbnail>
       <ion-label>
-        <strong>Đỗ Thị Ngọc Lan</strong>
-        <p>Nội cơ xương khớp</p>
+        <strong>{{result.doctorName}}</strong>
+        <p>{{result.department}}</p>
+        <div>
+          <ion-icon name="star" color="warning"></ion-icon>
+          <ion-icon name="star" color="warning"></ion-icon>
+          <ion-icon name="star" color="warning"></ion-icon>
+          <ion-icon name="star" color="warning"></ion-icon>
+          <ion-icon name="star" color="warning"></ion-icon>
+        </div>
       </ion-label>
       <ion-buttons slot="end">
-        <ion-button>
+        <ion-button (click)="btnDoctor_click()" >
           <ion-icon slot="icon-only" name="log-in"></ion-icon>
         </ion-button>
       </ion-buttons>
     </ion-item>
     <ion-card-content>
-      Đã có 40 lượt đặt khám bệnh
+      Cách bạn {{result.distance}} km
     </ion-card-content>
   </ion-card>
-  <ion-card>
-    <ion-item>
+</ion-list>
+  <!-- <ion-card>
+    <ion-item class="info">
       <ion-thumbnail slot="start">
         <img src="https://dwbxi9io9o7ce.cloudfront.net/images/06_10_2017_12_19_35_253731.jpeg">
       </ion-thumbnail>
       <ion-label>
         <strong>Nguyễn Thị Tài Linh</strong>
         <p>Nội cơ xương khớp</p>
-        <p>Phòng Khám Da Liễu 274 Phan Bá Vành - TP Thái Bình</p>
+        <div>
+          <ion-icon name="star" color="warning"></ion-icon>
+          <ion-icon name="star" color="warning"></ion-icon>
+          <ion-icon name="star" color="warning"></ion-icon>
+          <ion-icon name="star" color="warning"></ion-icon>
+          <ion-icon name="star" color="warning"></ion-icon>
+        </div>
       </ion-label>
       <ion-buttons slot="end">
         <ion-button>
@@ -113,17 +96,24 @@
       </ion-buttons>
     </ion-item>
     <ion-card-content>
-      Đã có 36 lượt đặt khám bệnh
+      Cách bạn 2km
     </ion-card-content>
   </ion-card>
-  <ion-card style="white-space: normal;">
-    <ion-item>
+  <ion-card>
+    <ion-item class="info"> 
       <ion-thumbnail slot="start">
         <img src="https://dwbxi9io9o7ce.cloudfront.net/images/18_05_2016_07_42_38_508966.jpeg">
       </ion-thumbnail>
       <ion-label>
         <strong>Đỗ Hữu Thảnh</strong>
         <p>Nội cơ xương khớp</p>
+        <div>
+          <ion-icon name="star" color="warning"></ion-icon>
+          <ion-icon name="star" color="warning"></ion-icon>
+          <ion-icon name="star" color="warning"></ion-icon>
+          <ion-icon name="star" color="warning"></ion-icon>
+          <ion-icon name="star" color="warning"></ion-icon>
+        </div>
       </ion-label>
       <ion-buttons slot="end">
         <ion-button>
@@ -132,18 +122,24 @@
       </ion-buttons>
     </ion-item>
     <ion-card-content>
-      Đã có 230 lượt đặt khám bệnh
+      Cách bạn 4km
     </ion-card-content>
   </ion-card>
   <ion-card>
-    <ion-item>
+    <ion-item class="info">
       <ion-thumbnail slot="start">
         <img src="https://dwbxi9io9o7ce.cloudfront.net/images/31_05_2016_10_14_46_788084.jpeg">
       </ion-thumbnail>
       <ion-label>
         <strong>Nguyễn Thị Minh Tuyết</strong>
         <p>Sản phụ khoa</p>
-        <p>Phòng khám Đa khoa Quốc tế Tâm Phúc</p>
+        <div>
+          <ion-icon name="star" color="warning"></ion-icon>
+          <ion-icon name="star" color="warning"></ion-icon>
+          <ion-icon name="star" color="warning"></ion-icon>
+          <ion-icon name="star" color="warning"></ion-icon>
+          <ion-icon name="star" color="warning"></ion-icon>
+        </div>
       </ion-label>
       <ion-buttons slot="end">
         <ion-button>
@@ -152,18 +148,24 @@
       </ion-buttons>
     </ion-item>
     <ion-card-content>
-      Đã có 139 lượt đặt khám bệnh
+      ĐCách bạn 0.34 km
     </ion-card-content>
   </ion-card>
   <ion-card>
-    <ion-item>
+    <ion-item class="info">
       <ion-thumbnail slot="start">
         <img src="https://dwbxi9io9o7ce.cloudfront.net/images/2015-11-19_170611.4449560000.jpeg">
       </ion-thumbnail>
       <ion-label>
         <strong>Nguyễn Thanh Liêm</strong>
         <p>Tai mũi họng</p>
-        <p>Bệnh viện quốc tế Hòa Mĩ</p>
+        <div>
+          <ion-icon name="star" color="warning"></ion-icon>
+          <ion-icon name="star" color="warning"></ion-icon>
+          <ion-icon name="star" color="warning"></ion-icon>
+          <ion-icon name="star" color="warning"></ion-icon>
+          <ion-icon name="star" color="warning"></ion-icon>
+        </div>
       </ion-label>
       <ion-buttons slot="end">
         <ion-button>
@@ -173,18 +175,24 @@
     </ion-item>
 
     <ion-card-content>
-      Đã có 78 lượt đặt khám bệnh
+      Cách bạn 4.5 km
     </ion-card-content>
   </ion-card>
   <ion-card>
-    <ion-item>
+    <ion-item class="info">
       <ion-thumbnail slot="start">
         <img src="https://dwbxi9io9o7ce.cloudfront.net/images/2015-12-25_040418.7956620000.jpeg">
       </ion-thumbnail>
       <ion-label>
         <strong>Nguyễn Thị Hoàn</strong>
         <p>Da liễu</p>
-        <p>Bệnh viện da liễu trung ương</p>
+        <div>
+          <ion-icon name="star" color="warning"></ion-icon>
+          <ion-icon name="star" color="warning"></ion-icon>
+          <ion-icon name="star" color="warning"></ion-icon>
+          <ion-icon name="star" color="warning"></ion-icon>
+          <ion-icon name="star" color="warning"></ion-icon>
+        </div>
       </ion-label>
       <ion-buttons slot="end">
         <ion-button>
@@ -193,18 +201,24 @@
       </ion-buttons>
     </ion-item>
     <ion-card-content>
-      Đã có 49 lượt đặt khám bệnh
+      Cách bạn 8 km
     </ion-card-content>
   </ion-card>
   <ion-card>
-    <ion-item>
+    <ion-item class="info">
       <ion-thumbnail slot="start">
         <img src="https://dwbxi9io9o7ce.cloudfront.net/images/2015-12-16_080153.7228210000.jpeg">
       </ion-thumbnail>
       <ion-label>
         <strong>Lê Thị Phương Lan</strong>
         <p>Đa khoa</p>
-        <p>Bệnh viện chợ rẫy</p>
+        <div>
+          <ion-icon name="star" color="warning"></ion-icon>
+          <ion-icon name="star" color="warning"></ion-icon>
+          <ion-icon name="star" color="warning"></ion-icon>
+          <ion-icon name="star" color="warning"></ion-icon>
+          <ion-icon name="star" color="warning"></ion-icon>
+        </div>
       </ion-label>
       <ion-buttons slot="end">
         <ion-button>
@@ -213,18 +227,24 @@
       </ion-buttons>
     </ion-item>
     <ion-card-content>
-      Đã có 76 lượt đặt khám bệnh
+      Cách bạn 4.7 km
     </ion-card-content>
   </ion-card>
   <ion-card>
-    <ion-item>
+    <ion-item class="info">
       <ion-thumbnail slot="start">
         <img src="https://dwbxi9io9o7ce.cloudfront.net/images/2015-11-19_171244.9375390000.jpeg">
       </ion-thumbnail>
       <ion-label>
         <strong>Nguyễn Đắc Nghĩa</strong>
         <p>Ngoại Cơ Xương Khớp, Ngoại Thần kinh, Chấn thương chỉnh hình - Cột sống</p>
-        <p>Bệnh viện chợ rẫy</p>
+        <div>
+          <ion-icon name="star" color="warning"></ion-icon>
+          <ion-icon name="star" color="warning"></ion-icon>
+          <ion-icon name="star" color="warning"></ion-icon>
+          <ion-icon name="star" color="warning"></ion-icon>
+          <ion-icon name="star" color="warning"></ion-icon>
+        </div>
       </ion-label>
       <ion-buttons slot="end">
         <ion-button>
@@ -234,18 +254,24 @@
     </ion-item>
 
     <ion-card-content>
-      Đã có 53 lượt đặt khám bệnh
+      Cách bạn 10.5 km
     </ion-card-content>
   </ion-card>
   <ion-card>
-    <ion-item>
+    <ion-item class="info">
       <ion-thumbnail slot="start">
         <img src="https://dwbxi9io9o7ce.cloudfront.net/images/2016-02-19_042841.6445800000.jpeg">
       </ion-thumbnail>
       <ion-label>
         <strong>Võ Đăng Hùng</strong>
         <p>Khoa Ung bướu</p>
-        <p>Bệnh viện Đa khoa Tâm Trí Sài Gòn</p>
+        <div>
+          <ion-icon name="star" color="warning"></ion-icon>
+          <ion-icon name="star" color="warning"></ion-icon>
+          <ion-icon name="star" color="warning"></ion-icon>
+          <ion-icon name="star" color="warning"></ion-icon>
+          <ion-icon name="star" color="warning"></ion-icon>
+        </div>
       </ion-label>
       <ion-buttons slot="end">
         <ion-button>
@@ -255,54 +281,7 @@
     </ion-item>
 
     <ion-card-content>
-      Đã có 20 lượt đặt khám bệnh
+      Cách bạn 2.9 km
     </ion-card-content>
-  </ion-card>
-  <ion-card>
-    <ion-item>
-      <ion-thumbnail slot="start">
-        <img src="https://dwbxi9io9o7ce.cloudfront.net/images/18_05_2016_07_42_38_508966.jpeg">
-      </ion-thumbnail>
-      <ion-label>
-        <strong>Bác sĩ Đỗ Hữu Thảnh</strong>
-        <p>Tiêu hóa</p>
-        <p>Bệnh viện Đa khoa Hùng Vương</p>
-      </ion-label>
-
-    </ion-item>
-
-    <ion-card-content>
-      Đã có 36 lượt đặt khám bệnh
-    </ion-card-content>
-  </ion-card>
-
+  </ion-card> -->
 </ion-content>
-
-<ion-footer>
-  <ion-toolbar>
-    <ion-tabs>
-      <ion-tab-bar slot="bottom">
-        <ion-tab-button tab="schedule">
-          <ion-icon name="calendar"></ion-icon>
-          <ion-label>Trang chủ</ion-label>
-          <ion-badge>6</ion-badge>
-        </ion-tab-button>
-
-        <ion-tab-button tab="speakers">
-          <ion-icon name="contacts"></ion-icon>
-          <ion-label>Tin nhắn</ion-label>
-        </ion-tab-button>
-
-        <ion-tab-button tab="map">
-          <ion-icon name="map"></ion-icon>
-          <ion-label>Tìm kiếm</ion-label>
-        </ion-tab-button>
-
-        <ion-tab-button tab="about">
-          <ion-icon name="information-circle"></ion-icon>
-          <ion-label>Hò sơ</ion-label>
-        </ion-tab-button>
-      </ion-tab-bar>
-    </ion-tabs>
-  </ion-toolbar>
-</ion-footer>

@@ -1,37 +1,12 @@
-page-home,
-.home {
-  ion-list {
-    border-radius: 1rem;
-    overflow: hidden;
-
-    ion-item,
-    .item:first-child,
-    .item:last-child {
-      border: none;
-    }
-
-    ion-datetime {
-      padding-left: 0;
-    }
-  }
-}
-.toolbar-title {
-    color: #FFFFFF,
-  }
-.toolbar-background {
-    background-color: #017EC0;
-  }
-  .no-scroll {
-    overflow-y: hidden;
-}
 :host
 {
   ion-content{
-    --background: url('https://us.123rf.com/450wm/asamask92/asamask921604/asamask92160400081/55517312-stock-vector-white-blue-sky-gradient-background-vector-illustration.jpg?ver=6') 0 0/100% 100% no-repeat ;
+    --background: url('../../../assets/img/homebg.jpg') 0 0/100% 100% no-repeat ;
     -webkit-background-size: contain;
     -moz-background-size: contain;
     -o-background-size: contain;
     background-size:contain;
+    background-attachment: scroll;
   }
   ion-header{
     ion-toolbar {
@@ -45,7 +20,28 @@ ion-toolbar {
   --background: transparent;
   --background-size: cover;
 }
+ion-card-content.cardcontent{
+  background-color: white;
+  color:black;
 }
-.no-scroll .scroll-content {
-  overflow: hidden;
+ion-card.op1{
+  background-color: #3d6eff;
+  background-image: linear-gradient(to bottom right, #6685e0, #0d3dcf);
+  color: white;
+}
+ion-card.op2{
+  background-color: #0099ff;
+  background-image: linear-gradient(to bottom right, #80ccff, #0099ff);
+  color: white;
+}
+ion-card.op3{
+  background-color: #ff9900;
+  background-image: linear-gradient(to bottom right, #ffc266, #ff9900);
+  color: white;
+}
+ion-card.op4{
+  background-color: #ff2626;
+  background-image: linear-gradient(to bottom right, #ff5c5c, #ff2626);
+  color: white;
+}
 }

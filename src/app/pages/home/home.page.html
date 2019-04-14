@@ -20,19 +20,19 @@
     <ion-row>
       <ion-col col-12>
         <ion-card>
-          <img src="http://vievie.vn//wp-content/uploads/2018/03/worry-free-app-banner.jpg" />
+          <img src="../../../assets/img/bia.png" />
         </ion-card>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col size="6">
-        <ion-card text-center padding color="primary" tappable (click)="searchDoctors()">
+        <ion-card text-center padding class="op1" tappable (click)="searchDoctors()">
           <ion-icon name="search"></ion-icon>
           <h3>Tìm bác sĩ</h3>
         </ion-card>
       </ion-col>
       <ion-col size="6">
-        <ion-card text-center padding color="secondary">
+        <ion-card text-center padding class="op2">
           <ion-icon name="help"></ion-icon>
           <h3>Hỏi bác sĩ</h3>
         </ion-card>
@@ -40,13 +40,13 @@
     </ion-row>
     <ion-row>
       <ion-col col-6>
-        <ion-card text-center padding color="warning">
+        <ion-card text-center padding class="op3">
           <ion-icon name="bowtie"></ion-icon>
           <h3>Ưu đãi</h3>
         </ion-card>
       </ion-col>
       <ion-col col-6>
-        <ion-card text-center padding color="tertiary">
+        <ion-card text-center padding class="op4">
           <ion-icon name="filing"></ion-icon>
           <h3>Hồ sơ</h3>
         </ion-card>
@@ -62,7 +62,7 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-  <ion-slides pager="true" [options]="slideOpts">
+  <ion-slides pager="true">
     <ion-slide>
       <ion-grid>
         <ion-row>
@@ -70,9 +70,8 @@
             <ion-card>
               <ion-item>
                 <img src="http://www.ecopark.com.vn/uploads/articles/summernote-attachments/798/content-attachments/khai-truong-tung-bung-%E2%80%93-hung-qua-suc-khoe-a7ced136994358831459f2dad2e74412.jpg">
-                <ion-label>Dịch sán lợn</ion-label>
               </ion-item>
-              <ion-card-content color="primary">
+              <ion-card-content class="cardcontent">
                 Xem ưu đãi
               </ion-card-content>
             </ion-card>
@@ -81,9 +80,8 @@
             <ion-card>
               <ion-item>
                 <img src="http://www.ecopark.com.vn/uploads/articles/summernote-attachments/798/content-attachments/khai-truong-tung-bung-%E2%80%93-hung-qua-suc-khoe-a7ced136994358831459f2dad2e74412.jpg">
-                <ion-label>Dịch sán lợn</ion-label>
               </ion-item>
-              <ion-card-content color="primary">
+              <ion-card-content class="cardcontent">
                 Xem ưu đãi
               </ion-card-content>
             </ion-card>
@@ -98,9 +96,8 @@
             <ion-card>
               <ion-item>
                 <img src="http://www.ecopark.com.vn/uploads/articles/summernote-attachments/798/content-attachments/khai-truong-tung-bung-%E2%80%93-hung-qua-suc-khoe-a7ced136994358831459f2dad2e74412.jpg">
-                <ion-label>Dịch sán lợn</ion-label>
               </ion-item>
-              <ion-card-content color="primary">
+              <ion-card-content class="cardcontent">
                 Xem ưu đãi
               </ion-card-content>
             </ion-card>
@@ -109,9 +106,8 @@
             <ion-card>
               <ion-item>
                 <img src="http://www.ecopark.com.vn/uploads/articles/summernote-attachments/798/content-attachments/khai-truong-tung-bung-%E2%80%93-hung-qua-suc-khoe-a7ced136994358831459f2dad2e74412.jpg">
-                <ion-label>Dịch sán lợn</ion-label>
               </ion-item>
-              <ion-card-content color="primary">
+              <ion-card-content class="cardcontent">
                 Xem ưu đãi
               </ion-card-content>
             </ion-card>
@@ -126,9 +122,9 @@
             <ion-card>
               <ion-item>
                 <img src="http://www.ecopark.com.vn/uploads/articles/summernote-attachments/798/content-attachments/khai-truong-tung-bung-%E2%80%93-hung-qua-suc-khoe-a7ced136994358831459f2dad2e74412.jpg">
-                <ion-label>Dịch sán lợn</ion-label>
+ 
               </ion-item>
-              <ion-card-content color="primary">
+              <ion-card-content class="cardcontent">
                 Xem ưu đãi
               </ion-card-content>
             </ion-card>
@@ -160,7 +156,7 @@
               </ion-button>
             </ion-buttons>
           </ion-item>
-          <ion-card-content color="light">
+          <ion-card-content class="cardcontent">
             Vừa qua dịch sán lợn đã bùng phát ở nhiều tỉnh thành trong cả nước, đã có hơn 100 ca mắc bệnh
           </ion-card-content>
         </ion-card>
@@ -180,7 +176,7 @@
               </ion-button>
             </ion-buttons>
           </ion-item>
-          <ion-card-content color="light">
+          <ion-card-content class="cardcontent">
             Vừa qua dịch sán lợn đã bùng phát ở nhiều tỉnh thành trong cả nước, đã có hơn 100 ca mắc bệnh
           </ion-card-content>
         </ion-card>
@@ -189,31 +185,3 @@
   </ion-grid>
 </ion-content>
 
-<ion-footer>
-  <ion-toolbar>
-    <ion-tabs>
-      <ion-tab-bar slot="bottom">
-        <ion-tab-button tab="schedule">
-          <ion-icon name="calendar"></ion-icon>
-          <ion-label>Trang chủ</ion-label>
-          <ion-badge>6</ion-badge>
-        </ion-tab-button>
-
-        <ion-tab-button tab="speakers">
-          <ion-icon name="contacts"></ion-icon>
-          <ion-label>Tin nhắn</ion-label>
-        </ion-tab-button>
-
-        <ion-tab-button tab="map">
-          <ion-icon name="map"></ion-icon>
-          <ion-label>Tìm kiếm</ion-label>
-        </ion-tab-button>
-
-        <ion-tab-button tab="about">
-          <ion-icon name="information-circle"></ion-icon>
-          <ion-label>Hồ sơ</ion-label>
-        </ion-tab-button>
-      </ion-tab-bar>
-    </ion-tabs>
-  </ion-toolbar>
-</ion-footer>
